@@ -1,0 +1,28 @@
+<table class="table table-bordered my-5 text-center">
+  <thead>
+    <tr>
+      <th>name</th>
+      <th>email</th>
+      <th>subjects</th>
+      <th>OTP Activation</th>
+      <th>Admin Activation</th>
+      <th>Blocked</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let teach of allTeachers">
+      <td>{{ teach.name }}</td>
+      <td>{{ teach.email }}</td>
+      <td>
+        <a *ngFor="let sub of teach.subjects" [routerLink]="link">
+          - {{ sub.name }} <br />
+        </a>
+      </td>
+      <td>{{ teach.process.activationOTPStatus }}</td>
+      <td>{{ teach.process.activationAdmin }}</td>
+      <td>{{ teach.process.blocked }}</td>
+      <td>Actions</td>
+    </tr>
+  </tbody>
+</table>

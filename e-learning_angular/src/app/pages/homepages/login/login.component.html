@@ -1,0 +1,114 @@
+<section class="mt-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6 text-center mb-3">
+        <h2 class="heading-section" style="color: #E3B04B;">Login</h2>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-12 col-lg-10">
+        <div class="wrap d-md-flex">
+          <div
+            class="img"
+            style="background-image: url(../../../assets/images/login.svg);"
+          ></div>
+          <div class="login-wrap p-4 p-md-5">
+            <div class="d-flex">
+              <div class="w-100">
+                <h3 class="mb-4">Sign In</h3>
+              </div>
+              <div class="w-100">
+                <p class="social-media d-flex justify-content-end">
+                  <a
+                    href="#"
+                    class="social-icon d-flex align-items-center justify-content-center"
+                    ><span class="fa fa-facebook"></span
+                  ></a>
+                  <a
+                    href="#"
+                    class="social-icon d-flex align-items-center justify-content-center"
+                    ><span class="fa fa-twitter"></span
+                  ></a>
+                </p>
+              </div>
+            </div>
+            <form
+              #login="ngForm"
+              class="signin-form"
+              (ngSubmit)="handleLogin(login)"
+            >
+              <div class="alert alert-danger" *ngIf="msg!=''">{{msg}}</div>
+              <div class="form-group mb-3">
+                <label class="label" for="name">Email</label>
+                <input
+                  [ngClass]="{'form-control':true ,'is-invalid':email.invalid &&(email.touched || login.submitted),'is-valid':email.valid}"
+                  name="email"
+                  type="text"
+                  placeholder="Enter your Email Address"
+                  #email="ngModel"
+                  [(ngModel)]="user.email"
+                  required
+                />
+              </div>
+              <p
+                *ngIf="email.errors?.['required'] &&(email.touched|| login.submitted) "
+                class="text-danger p-0 m-0"
+              >
+                Email is required
+              </p>
+
+              <div class="form-group mb-3">
+                <label class="label" for="password">Password</label>
+                <input
+                  [ngClass]="{'form-control':true ,'is-invalid':passowrd.invalid &&(passowrd.touched || login.submitted),'is-valid':passowrd.valid}"
+                  name="password"
+                  type="password"
+                  placeholder="Password"
+                  #passowrd="ngModel"
+                  [(ngModel)]="user.password"
+                  required
+                />
+              </div>
+              <p
+                *ngIf="passowrd.errors?.['required'] && (passowrd.touched || login.submitted)"
+                class="text-danger"
+              >
+                Password is required
+              </p>
+              <div class="row">
+                <div
+                  class="d-md-flex justify-content-start align-items-center mb-4 py-2"
+                >
+                  <h6 class="mb-0 me-4">User Type :</h6>
+                  <div class="col-md-6 mb-0">
+                    <select class="select" name="userType" ngModel required>
+                      <option value="student">Student</option>
+                      <option value="teacher">Teacher</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <button
+                  class="form-control btn btn-primary rounded submit px-3"
+                >
+                  Sign In
+                </button>
+              </div>
+              <div class="form-group d-md-flex">
+                <div class="m-auto text-md-right">
+                  <a href="#">Forgot Password</a>
+                </div>
+              </div>
+            </form>
+            <p class="text-center">
+              Not a member?
+              <a data-toggle="tab" [routerLink]="'/register'">Sign Up</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

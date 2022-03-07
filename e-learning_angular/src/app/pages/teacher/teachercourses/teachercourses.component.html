@@ -1,0 +1,12 @@
+<ng-container *ngFor="let course of courses" isLoaded>
+  <div><span style="font-weight:bold">name: </span>{{course.name}}</div>
+  <div><span style="font-weight:bold" >description:</span>{{course.description}}</div>
+  <div><span style="font-weight: bold;">videos:</span>
+    <div *ngFor="let video of course.videos " >
+      <span style="font-weight: bold;"> video name:</span> {{video.videoName}} <br>
+      <iframe  [src]="iframLink(video.link)" width="500" height="400" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen ></iframe>
+    </div>
+  </div>
+</ng-container>
+
+<iframe title="YouTube video player" [src]="" width="500" height="400" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
